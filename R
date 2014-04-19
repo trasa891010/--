@@ -1,0 +1,25 @@
+makeCacheMatrix<-function(x=matrix()){
+        m=NULL
+        set<-function(y){
+                x<<-y
+                m<<-NULL
+        }
+        get<-function()x
+        setsolve<-function(solve)m<<-solve
+        getsolve<-function()m
+        list(set = set, get = get,
+             setsolve = setsolve,
+             getsolve = getsolve)
+}
+
+cacheSolve<-function(x,...){
+        m<-x$getsolve()
+        if(det(m)==0){
+                message("matrix is not invertible")
+                return(m)
+        }
+        data <- x$get()
+        m <- solvedata, ...)
+        x$setsolve(m)
+        m
+}
